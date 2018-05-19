@@ -2,50 +2,70 @@
   body {
     margin: 20px;
     background: #455a64;
-}
-.search-box {
-    position: relative;
-}
-.search-box .glyphicon {
-    position: absolute;
-    padding: 10px;
-    pointer-events: none;
-    left: 15px;
-    top: 0px;
-}
-.search-box .glyphicon:before {
-    color: white;
-    transition: all 0.2s linear;
-}
-.search-box input {
-    color: #fff;
-    padding-left: 60px;
-    background: #546e7a;
-    border:0;
-    outline: none !important;
-    transition: all 0.2s linear;
-}
-.search-box input:focus {
-    background: #fff !important;
-    outline: 0;
-    color: #333;
-}
-.search-box input:focus + .glyphicon:before {
-    color: #000;
-}
-.search-box input:hover {
-    background: #78909c;
-}
-.search-button {
-  padding-top: 20px;
-}
+  }
+  .search-box {
+      position: relative;
+  }
+  .search-box .glyphicon {
+      position: absolute;
+      padding: 10px;
+      pointer-events: none;
+      left: 15px;
+      top: 0px;
+  }
+  .search-box .glyphicon:before {
+      color: white;
+      transition: all 0.2s linear;
+  }
+  .search-box input {
+      color: #fff;
+      padding-left: 60px;
+      background: #546e7a;
+      border:0;
+      outline: none !important;
+      transition: all 0.2s linear;
+  }
+  .search-box input:focus {
+      background: #fff !important;
+      outline: 0;
+      color: #333;
+  }
+  .search-box input:focus + .glyphicon:before {
+      color: #000;
+  }
+  .search-box input:hover {
+      background: #78909c;
+  }
+  .search-button {
+    /*padding-top: 20px;*/
+  }
 </style>
-<%= form_for(@user, :url => search_results_path , :method => 'GET') do |f| %>
+<%= form_tag(controller: 'application', action: 'search_results', method: 'post') do |f| %>
   <div class="search-box">
-    <%= f.text_field :email, :class=>"form-control", :placeholder => 'Search Hashtags here'%>
+    <%= text_field_tag :tag,"", :class=>"form-control", :placeholder => 'Search Hashtags here'%>
   </div>
-
   <div class="search-button">
-    <%= f.submit "Search" %>
+    <%= submit_tag "Search", class: "btn btn-info", style: "float: right;" %>
   </div>
+<% end %>
+<br/>
+<br/>
+<br/>
+<% if @hash_tags.present? %>
+  <table style="color: #fff;" class="table table-horizontal">
+    <thead>
+      <th>Sr.</th>
+      <th>Hashtag</th>
+      <th>Posts</th>
+    </thead>
+    <tbody>
+      <% @hash_tags.each_with_index do |hash_tag, index| %>
+        <tr>
+          <td><%= (index+1) %></td>
+          <td><%= hash_tag[0] %></td>
+          <td><%= hash_tag[1] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

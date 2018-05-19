@@ -36,8 +36,16 @@
 .search-box input:hover {
     background: #78909c;
 }
+.search-button {
+  padding-top: 20px;
+}
 </style>
+<%= form_for(@user, :url => search_results_path , :method => 'GET') do |f| %>
+  <div class="search-box">
+    <%= f.text_field :email, :class=>"form-control", :placeholder => 'Search Hashtags here'%>
+  </div>
 
-<div class="search-box">
-  <input placeholder="Search Hashtags here" type="text" class="form-control" />
-</div>
+  <div class="search-button">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

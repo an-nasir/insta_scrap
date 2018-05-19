@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   def search_results
     results = RubyInstagramScraper.search(params[:tag])
     @hash_tags = results['hashtags'].pluck('hashtag').pluck('name', 'media_count')
+    # binding.pry
+    @hash_tags = @hash_tags.sort_by(&:last).reverse
     render 'layouts/search'
   end
 

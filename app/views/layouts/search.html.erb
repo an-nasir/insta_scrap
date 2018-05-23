@@ -52,9 +52,9 @@
 <br/>
 <br/>
 <% if @hash_tags.present? %>
-  <table style="color: #fff;" class="table table-horizontal">
+  <table style="color: #fff;" class="table table-horizontal" id="result">
     <thead>
-      <th>Sr.</th>
+      <th data-orderable="false" >Sr.</th>
       <th>Hashtag</th>
       <th>Posts</th>
     </thead>
@@ -69,3 +69,11 @@
     </tbody>
   </table>
 <% end %>
+
+<script>
+  datatable2 = $('#result').DataTable({
+    "bFilter": false,
+    "paging": false,
+    "info": false
+  });
+</script>

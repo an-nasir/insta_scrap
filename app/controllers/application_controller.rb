@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     results.each do |result|
       @hash_tags = @hash_tags + RubyInstagramScraper.search(result)['hashtags'].pluck('hashtag').pluck('name', 'media_count') if result.ascii_only?
     end
-    @hash_tags = @hash_tags.uniq
+    @hash_tags = @hash_tags.uniq { |s| s.first }
     @hash_tags = @hash_tags.sort_by(&:last).reverse
     render 'layouts/search'
   end

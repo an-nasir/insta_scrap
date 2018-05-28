@@ -16,7 +16,7 @@
 #
 default: &default
   adapter: postgresql
-  username: postgres
+  username: pguser
   password: postdb
   pool: 5
   timeout: 5000

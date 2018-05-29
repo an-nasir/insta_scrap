@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>IScrap</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <style>
-      /*body {font-family: Arial, Helvetica, sans-serif;}*/
+// Place all the styles related to the WebSettings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
       /*form {border: 3px solid #f1f1f1;}*/
 
-      input[type=email], input[type=password] {
+      body {background: #455a64;}
+      input[type=text], input[type=number] {
           width: 100%;
           padding: 12px 20px;
           margin: 8px 0;
@@ -81,23 +73,4 @@
              width: 100%;
           }
       }
-    </style>
-  </head>
-
-  <body>
-    <% if flash[:notice].present? %>
-      <div class="alert alert-success" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong><%= flash[:notice]%>
-      </div>
-    <%end%>
-    <%= yield %>
-    <script type="text/javascript">
-      window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function(){
-            $(this).remove(); 
-        });
-    }, 4000);
-    </script>
-  </body>
-</html>
+ 

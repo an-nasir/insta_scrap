@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def search
+    @web_settings = WebSetting.first
     render 'layouts/search'
   end
 

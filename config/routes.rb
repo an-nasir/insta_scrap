@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :web_settings
   devise_for :users
   # root :to => "devise/sessions#new"
   root :to => "application#search"

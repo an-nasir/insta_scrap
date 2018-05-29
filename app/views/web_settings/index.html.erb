@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Web Settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post min</th>
+      <th>Post max</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @web_settings.each do |web_setting| %>
+      <tr>
+        <td><%= web_setting.post_min %></td>
+        <td><%= web_setting.post_max %></td>
+        <td><%= link_to 'Show', web_setting %></td>
+        <td><%= link_to 'Edit', edit_web_setting_path(web_setting) %></td>
+        <td><%= link_to 'Destroy', web_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Web Setting', new_web_setting_path %>

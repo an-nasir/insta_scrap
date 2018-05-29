@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post min:</strong>
+  <%= @web_setting.post_min %>
+</p>
+
+<p>
+  <strong>Post max:</strong>
+  <%= @web_setting.post_max %>
+</p>
+
+<%= link_to 'Edit', edit_web_setting_path(@web_setting) %> |
+<%= link_to 'Back', web_settings_path %>

@@ -1,0 +1,28 @@
+<%= form_with(model: web_setting, local: true) do |form| %>
+  <% if web_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(web_setting.errors.count, "error") %> prohibited this web_setting from being saved:</h2>
+
+      <ul>
+      <% web_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :post_min %>
+    <%= form.number_field :post_min %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_max %>
+    <%= form.number_field :post_max %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit", class: 'btn btn-md btn-success' %>
+    <%= link_to 'Back', web_settings_path, class: 'btn btn-md btn-warning' %>
+  </div>
+<% end %>

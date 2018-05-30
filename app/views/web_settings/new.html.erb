@@ -1,0 +1,6 @@
+<div style="padding: 20px;">
+	<h1>Web Setting</h1>
+	<%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+	<%= render 'form', web_setting: @web_setting %>
+</div>
+

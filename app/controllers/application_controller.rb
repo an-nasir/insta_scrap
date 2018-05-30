@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
-  # before_action :authenticate_user!
+  before_action :set_min_max
 
   def search
-    @web_settings = WebSetting.first
     render 'layouts/search'
   end
 
@@ -28,8 +27,12 @@ class ApplicationController < ActionController::Base
     render 'layouts/search'
   end
 
-  # protected  
-  #   def after_sign_in_path_for(resource)
-  #     redirect_to :search
-  #   end
+  protected  
+    # def after_sign_in_path_for(resource)
+    #   redirect_to :search
+    # end
+
+    def set_min_max
+      @web_settings = WebSetting.first
+    end
 end

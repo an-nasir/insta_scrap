@@ -42,7 +42,7 @@
 </style>
 <%= form_tag(controller: 'application', action: 'search_results', method: 'post') do |f| %>
   <div class="search-box">
-    <%= text_field_tag :tag,"", :class=>"form-control", :placeholder => 'Search Hashtags here'%>
+    <%= text_field_tag :tag,"", :class=>"form-control", :placeholder => 'Search Hashtags here', value: params[:tag]%>
     <br/>
     <input id="range_03" name="post_range" tabindex="-1" readonly="" value="<%= params[:post_range] if params[:post_range].present? %>">
     <br/>

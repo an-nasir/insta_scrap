@@ -47,6 +47,11 @@
     <input id="range_03" name="post_range" tabindex="-1" readonly="" value="<%= params[:post_range] if params[:post_range].present? %>">
     <br/>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <input type="checkbox" name="prune" <%= params[:prune].present? ? 'checked' : '' %> /><strong style="color: #fff;"> Prune Older Records - SLOW</strong>
+    </div>
+  </div>
   <div class="search-button">
     <%= link_to "Change Min/Max", new_web_setting_path, class: 'btn btn-success', style: 'float: right;' %>
     <%= submit_tag "Search", class: "btn btn-warning", style: "float: right;" %>

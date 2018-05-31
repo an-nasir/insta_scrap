@@ -9,6 +9,7 @@ gem 'ruby-instagram-scraper'
 gem 'bootstrap'
 gem 'devise'
 gem 'jquery-rails'
+gem 'watir-nokogiri'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record

@@ -42,9 +42,11 @@ class ApplicationController < ActionController::Base
     def tag_pruning tags
       pruned_tags = []
       tags.each do |tag|
-        tag_nodes = InstaHelper.get_tag_media_nodes(tag.first)
-        unless (DateTime.now  - DateTime.strptime(tag_nodes.first["node"]["taken_at_timestamp"].to_s,'%s')).to_i > 30
-          pruned_tags.push tag
+        if tag.first.ascii_only?
+          tag_nodes = InstaHelper.get_tag_media_nodes(tag.first)
+          unless (DateTime.now  - DateTime.strptime(tag_nodes.first["node"]["taken_at_timestamp"].to_s,'%s')).to_i > 30
+            pruned_tags.push tag
+          end
         end
       end
       pruned_tags

@@ -41,15 +41,21 @@ class ApplicationController < ActionController::Base
     # end
     def tag_pruning tags
       pruned_tags = []
-      tags.each do |tag|
-        if tag.first.ascii_only?
-          tag_nodes = InstaHelper.get_tag_media_nodes(tag.first)
+      chunks = tags.in_groups_of( (tags.count/20).to_i )
+      # binding.pry
+
+      chunks.each_with_index do |chunk, i|
+        # binding.pry
+        if chunk.first.first.ascii_only?
+          tag_nodes = InstaHelper.get_tag_media_nodes(chunk.first.first)
+          puts "=========== #{tag_nodes.count} @ #{i} ================"
           unless (DateTime.now  - DateTime.strptime(tag_nodes.first["node"]["taken_at_timestamp"].to_s,'%s')).to_i > 30
-            pruned_tags.push tag
+            puts "<<<<<<<<<<<<<<< Added #{i}th tag >>>>>>>>>>>>>>>>>>"
+            pruned_tags.push chunk
           end
         end
       end
-      pruned_tags
+      pruned_tags.flatten.in_groups_of(2)
     end
 
     def set_min_max
